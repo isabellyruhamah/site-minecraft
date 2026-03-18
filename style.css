@@ -1,0 +1,722 @@
+body {
+      background-color: #fcebdd;
+      font-family: Arial, sans-serif;
+      margin: 0; /* remove margens padrão */
+      padding: 120px; /* altura do menu */
+      /* inline cursor with base64 data URI to sidestep CORS; hotspot at 8x8 */
+      cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAG6GlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDIgNzkuYTFjZDEyZiwgMjAyNC8xMS8xMS0xOTowODo0NiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI2LjQgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyNS0wNi0yMFQxNzozMDowOS0wNDowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjUtMDYtMjFUMTE6MzE6MDYtMDQ6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjUtMDYtMjFUMTE6MzE6MDYtMDQ6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjc3NDNhN2JjLTk3M2EtMWM0NC04NDllLTRlN2UzNzg0NTIzZCIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOmJhYzU4MTA5LTU5MWMtMTI0ZS04NjA4LTIzNjE5ZWY2NTg3OCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOmY0MjdhN2FhLTgzNDQtZTA0NC1hYmVkLWJmYjg3YjU0ZDA5YSI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6ZjQyN2E3YWEtODM0NC1lMDQ0LWFiZWQtYmZiODdiNTRkMDlhIiBzdEV2dDp3aGVuPSIyMDI1LTA2LTIwVDE3OjMwOjA5LTA0OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjYuNCAoV2luZG93cykiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBpbWFnZS9naWYgdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxOWFiZjdiYi0yYTcwLTRmNDYtYmZiOC0yZTEzMjEwYTFkM2QiIHN0RXZ0OndoZW49IjIwMjUtMDYtMjBUMTc6NTU6NTUtMDQ6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyNi40IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6Nzc0M2E3YmMtOTczYS0xYzQ0LTg0OWUtNGU3ZTM3ODQ1MjNkIiBzdEV2dDp3aGVuPSIyMDI1LTA2LTIxVDExOjMxOjA2LTA0OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjYuNCAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SQ7WigAAAS5JREFUaN7t17ENwjAQBVAvAC0shNiAKi0IBqCCTVLR0WQCJDoWoKFnAQokKIhksMlFl4uLRELEBz/SYQEp7uk78sWk88S6el1Gc5kCkWvHlJDb/qQ6mQpEM6YG0YoJQjRiapDNcqI3EUqAp+FAqiDug84S1c8I/yIPR02pGO0neiMIEkEiSASJ/FYio2nP8lKTiGx8lQ38mi6SSkUJkakQYJ0N/UqYx/li74ejry4wjW8k0HjWL5uXRRD/6vxlTOutJVPgRQj7vvLon5HQduLlENft7qtbrDXENUegEMT971YVENckh1DzMpVoIf6dpYCEthSvqBPhEGo0hKB7ooZIDEeFfot+1qJTXDbfBeIjQ6McT7oaU/5j+gUEEEAAAQQQQAABBBBAAAEEEH31BAaqFwwFr/bbAAAAAElFTkSuQmCC") 8 8, auto;
+    }
+
+/* interactive elements use the hand pointer graphic, embedded as data URI */
+a, button {
+      cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAGG2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgOS4xLWMwMDIgNzkuYTFjZDEyZiwgMjAyNC8xMS8xMS0xOTowODo0NiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDI2LjQgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyNS0wNi0yMFQxNzo0MDo0Mi0wNDowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjUtMDYtMjFUMTE6Mzc6MzYtMDQ6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjUtMDYtMjFUMTE6Mzc6MzYtMDQ6MDAiIGRjOmZvcm1hdD0iaW1hZ2UvcG5nIiBwaG90b3Nob3A6Q29sb3JNb2RlPSIzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjliNWNmMzQ5LWQ5ZTQtZGE0Mi1iZmY3LTFkMTNiZDczY2IzNiIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjcwMjk0NDY0LTIxMWMtY2M0MS04ZTI1LTFmYzZkMGFkODBkNCIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjZhMjM1OTMxLTgzNDctZWQ0Zi1hYjk5LTM0OGViZDhiODAyNyI+IDx4bXBNTTpIaXN0b3J5PiA8cmRmOlNlcT4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNyZWF0ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6NmEyMzU5MzEtODM0Ny1lZDRmLWFiOTktMzQ4ZWJkOGI4MDI3IiBzdEV2dDp3aGVuPSIyMDI1LTA2LTIwVDE3OjQwOjQyLTA0OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjYuNCAoV2luZG93cykiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBpbWFnZS9naWYgdG8gaW1hZ2UvcG5nIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo5YjVjZjM0OS1kOWU0LWRhNDItYmZmNy0xZDEzYmQ3M2NiMzYiIHN0RXZ0OndoZW49IjIwMjUtMDYtMjFUMTE6Mzc6MzYtMDQ6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyNi40IChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1wTU06SGlzdG9yeT4gPC9yRGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6CiN0PAAAA80lEQVRo3u3XQQrCMBAF0DmoF/AKvYV7wUO48QCewBt4ApcuREaSGvsnTosKwgz8xYeUbP5LmpSKqsphGLSkjLNGRsC9JjPmCdFZTJbdAojFTIAcu/VadQ8DgPCYWcg7JvbOmLPgYbxExEh/sLNiZOaGygvxbqqlbNermrCHHSGt7FjYIm7nS00UjHg7sN9tTNmpsIW0cTCImg8hlkWMDwz0auHhRQgWRgw+h7u1MKXg9XhaRJT5NJCGweI4Fx7SY/riIa/fTzGRin8Nibj6P0NS/CESQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIX/OA4RldE6wTePDAAAAAElFTkSuQmCC") 8 8, pointer;
+}
+
+    h1 {
+      color: #a74425;
+      font-size: 40px;
+      text-align: center;
+      animation: zoomIn 1.5s ease forwards;
+    }
+    /* 7. Zoom In */
+    @keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+    }
+    .zoom-in {
+    animation: zoomIn 15.0s ease forwards;
+    }
+    .card .card-text {
+    display: flex;
+    flex-direction: column; /* organiza o texto em coluna */
+    gap: 8px;
+    }
+
+    /*container para cada par imagem + texto */
+    .card {
+      display: flex; /* exibe imagem e texto lado a lado */
+      gap: 20px; /* espaço entre imagem e texto */
+      align-items: flex-start; /* alinha o texto ao topo da imagem */
+      margin-bottom: 24px; /* espaço entre os cards */
+
+    background: linear-gradient(135deg, #ffac86, #ffd2c1, #fcebdd); /* degradê moderno */
+    border-radius: 15px;       /* cantos arredondados */
+    padding: 20px;             /* espaço interno */
+    margin: 20px 0;            /* espaço entre os cards */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* sombra leve */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: aparecer 1.5s ease forwards;
+    }
+    /* animação de aparição originalmente usada no body, removida ou aplicada em outro elemento */
+    @keyframes aparecer {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .card:hover {
+    transform: translateY(-10px);      /* sobe ao passar o mouse */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2); /* sombra mais forte */
+    }
+    /* Ajustes na imagem */
+    img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .quadrada {
+    width: 300px;   /* largura fixa */
+    height: 300px;  /* altura fixa */
+    object-fit: cover; /* mantém proporção e corta excesso */
+  }
+
+    /* Texto ao lado da imagem */
+    p {
+      color: #000;
+      font-size: 18px;
+      text-align: left;
+      margin: 5px;
+    }
+    .header-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px; /* espaço abaixo da imagem */
+    animation: zoomIn 1.5s ease forwards;
+  }
+ /* 7. Zoom In */
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.zoom-in {
+  animation: zoomIn 0.6s ease forwards;
+}
+
+  .header-image img {
+    width: 100%;          /* ocupa a largura disponível */
+    max-width: 1500px;    /* controla o tamanho máximo (ajuste se quiser maior) */
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .conclusao {
+    background-color: #ffcbb3;
+    padding: 20px;
+    border-radius: 10px; /* cantos arredondados */
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* sombra leve */
+  }
+
+  .botao {
+        display: inline-block;
+        padding: 10px 20px;                /*  tamanho do botão */
+        background:  rgb(255, 173, 140);     /* cor do botão */
+        color: rgb(255, 240, 240);
+        text-decoration: none;
+        border-radius: 10px;               /* formato arredondado maior */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* sombra leve */
+    }
+
+    /* container para posicionamento dos botões lado a lado */
+    .botao-container {
+        display: flex;
+        gap: 10px;
+    }
+    .botao:hover {
+    transform: translateY(-2px);      /* sobe ao passar o mouse */
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2); /* sombra mais forte */
+    }
+
+/* ===== MENU FIXO NO TOPO ===== */
+
+nav.menu {
+    position: fixed !important; /*menu fixo */
+    top: 0; /* fixa o menu no topo da tela */
+    left: 0; /* garante que o menu comece do lado esquerdo da tela */
+    right: 0; /* garante que o menu termine do lado direito da tela */
+    width: 100%; /* garante que o menu ocupe toda a largura da tela */
+    background: linear-gradient(135deg, #ff8e6bf5, #ffc9b5f5); /* degradê moderno */
+    z-index: 9999; /* garante que o menu fique acima de outros elementos */
+     box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* sombra leve para destacar o menu */
+}
+
+/* container interno do menu */
+.menu-container {
+    max-width: 1200px; /* largura máxima do conteúdo do menu */
+    width:90%;
+    margin: auto; /* centraliza o conteúdo do menu */
+    padding: 25px 50px; /* espaço interno do menu - aumentado verticalmente */
+    display: flex; /* usa flexbox para organizar os itens do menu */
+    justify-content: space-between; /*logo à esquerda, links à direita*/
+    align-items: center; /*alinha verticalmente os itens do menu*/
+}
+
+/* garante altura mínima para evitar que o texto fique apertado */
+nav.menu {
+    min-height: 50px; /* ajuste conforme necessário */
+}
+
+/* lista do menu */
+.menu ul {
+    list-style: none; /* remove os marcadores da lista */
+    display: flex; /* exibe os links em linha */
+    gap: 35px; /* espaço entre os links */
+    margin: 0; /* remove a margem padrão da lista */
+    padding: 0; /* remove o preenchimento padrão da lista */
+}
+
+/* links */
+.menu a {
+    position: relative; /* necessário para posicionar a linha animada */
+    color: white;
+    text-decoration: none; /* remove o sublinhado dos links */
+    font-size: 17px; /* tamanho da fonte */
+    font-weight: 500; /* peso da fonte */
+    padding-bottom: 5px; /* espaço para a linha animada */
+}
+
+/* linha animada embaixo do nome */
+.menu a::after {
+    content: ""; /* conteúdo vazio para criar a linha */
+    position: absolute; /* posicionamento absoluto em relação ao link */
+    left: 0; /* começa do lado esquerdo do link */
+    bottom: 0; /* posiciona a linha na parte inferior do link */
+    width: 0%; /* começa com largura zero para a animação */
+    height: 2px; /* altura da linha */
+    background-color: white; /* cor da linha */
+    transition: width 0.3s ease; /* animação suave para a largura da linha */
+}
+
+/* hover */
+.menu a:hover::after {
+    width: 100%;
+} /* expande a linha para toda a largura do link ao passar o mouse */
+
+
+
+/* ===== MENU LATERAL ===== */
+#menu-lateral{
+position:fixed;
+top:0;
+left:0;
+width:200px; /* largura do menu lateral */
+height:100%;/* altura total na tela */
+background:#ffe3d7;
+padding:70px 20px; /* espaço interno do menu lateral */
+transform:translateX(-100%); /* esconde o menu lateral fora da tela */
+transition:0.4s; /* animação suave para abrir/fechar o menu lateral */
+z-index:10000; /* garante que o menu lateral fique acima de outros elementos, mas abaixo do botão */
+box-shadow:4px 0 10px rgba(0,0,0,0.15); /* sombra para destacar o menu lateral */
+}
+
+#menu-lateral a{
+display:block;
+margin-bottom:15px;
+text-decoration:none;
+color:#6e5c5c;
+font-size:16px;
+}
+
+#menu-lateral img{
+width:18px;
+height:18px;
+}
+
+#menu-lateral a:hover{
+color:#e58f82;
+transform:translateX(6px);
+transition:0.2s;
+}
+
+/* ===== MENU ABERTO ===== */
+.menu-lateral.ativo {
+  transform: translateX(0);
+}
+
+#overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+z-index:9999;
+}
+
+.ul-menu {
+    position:fixed;
+    top:10px;
+    left:1300px;
+    font-size:22px;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    z-index:10001;
+}
+
+/* logo */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold; /* peso da fonte para destacar a logo */
+    letter-spacing: 1px;
+    margin-left: -90px;
+
+    position:fixed;
+    top:15px;
+    left: 250px;
+    font-size:22px;
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+    z-index:10001;
+}
+
+/* ===== BOTÃO MENU LATERAL ===== */
+#botao-menu{
+position:fixed;
+top:10px;
+left:20px;
+font-size:22px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+z-index:10001;
+}
+ /* ===== VÍDEO EMBUTIDO ===== */
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  aspect-ratio: 16 / 9;
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== RODAPÉ ===== */
+.footer {   
+     
+    background-color: #ebebeb00;
+    color: rgba(255, 255, 255, 0);
+    text-align: center;
+    margin-top: 100px;
+    
+}
+
+/* ===== SEPARADOR ===== */
+.separador {
+    border: none;
+    height: 5px;
+    background-color: #ffc8af; /* cor do separador */
+    margin: 80px 0; /* espaço acima e abaixo do separador */
+}
+
+/* ===== EFEITOS DE SPARKLE E FIZZ ===== */
+
+
+.glyph-sparkle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: sparkle-float 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+            color: #dea9a2;
+            font-size: 14px;
+            font-family: serif;
+            text-shadow: 0 0 4px #ffffff, 0 0 8px #ffffff;
+            opacity: 0.85;
+            white-space: nowrap;
+        }
+
+        @keyframes sparkle-float {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--drift-x)), -120%) scale(0.7) rotate(var(--rotate));
+            }
+        }
+
+        .sparkle-toggle {
+            position: fixed;
+            bottom: 12px;
+            left: 12px;
+            z-index: 10000;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            font-family: serif;
+            line-height: 1;
+            padding: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+            background: #c5b5b2;
+            color: #fff3f0;
+            border: none;
+        }
+
+
+.sparkle-toggle span {
+    pointer-events: none;
+}
+
+.sparkle-toggle * {
+    cursor: url("https://www.heyshadylady.com/graphics/cursor-pointer-hand2.png"), pointer !important;
+}
+
+.sparkle-toggle img,
+.sparkle-toggle svg {
+    pointer-events: none;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+        .sparkle-toggle.sparkles-on {
+            background: #b68079;
+            opacity: 1;
+        }
+
+        .sparkle-toggle.sparkles-off {
+            opacity: 0.7;
+        }
+
+        .sparkle-toggle,
+        .sparkle-toggle:hover,
+        .sparkle-toggle * {
+            cursor: url("https://www.heyshadylady.com/graphics/cursor-pointer-hand2.png"), pointer !important;
+        }
+
+        .sparkle-toggle:hover {
+            box-shadow: 0 0 8px rgba(214, 144, 137, 0.5);
+        }
+
+        .sparkle-cursor-fix {
+            position: absolute;
+            inset: 0;
+        }
+
+        .fizz-effect {
+            position: fixed;
+            pointer-events: none;
+            font-size: 18px;
+            color: #fff3f0;
+            text-shadow: 0 0 6px #dea9a2, 0 0 10px #dea9a2;
+            transform: translate(-50%, -50%) scale(1);
+            animation: fizz-pop 0.33s ease-out forwards;
+            z-index: 10001;
+            font-family: serif;
+        }
+
+        @keyframes fizz-pop {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.4);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.6);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .sparkle-toggle {
+                display: none !important;
+            }
+        }
+
+        #sparkle-wrapper {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+/* ===== CONTATO ===== */
+
+/* banner */
+.banner-contato{
+background: url("https://i.pinimg.com/originals/3a/3a/99/3a3a99e48e68349cf4a6b742a4692b4c.png?nii=t");
+background-size:cover;
+background-position:center;
+height:100px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+border-radius: 90px 0 90px 0;
+}
+
+#h1-banner {
+color: #97381c;
+font-size: 40px;
+text-align: center;
+animation: zoomIn 1.5s ease forwards;
+}
+
+/* container */
+.contato-container{
+max-width:1000px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+/* sobre mim */
+.sobre-mim{
+display:flex;
+gap:30px;
+align-items:center;
+margin-top: 60px; /* espaço abaixo do menu */
+}
+
+.foto-perfil{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+}
+
+/* redes sociais */
+.social-container{
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+gap:20px;
+}
+
+.social-card{
+background:white;
+padding:20px;
+border-radius:12px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+text-decoration:none;
+color:black;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+transition:all 0.3s;
+}
+
+.social-card img{
+width:40px;
+margin-bottom:10px;
+}
+
+.social-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* texto contato */
+.contato-texto{
+text-align:center;
+}
+
+
+
+/*====  SOBRE MIM  ====*/
+
+.sobre{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:60px;
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
+
+.sobre-texto{
+max-width:500px;
+}
+
+.sobre-texto h3{
+font-family:cursive;
+color:#777;
+}
+
+.sobre-texto h1{
+font-size:48px;
+margin:10px 0;
+}
+
+.sobre-texto p{
+line-height:1.6;
+color:#555;
+}
+
+
+/* fotos */
+
+.sobre-fotos{
+position:relative;
+}
+
+.foto-grande{
+width: 500px;   /* largura fixa */
+height: 700px;  /* altura fixa */
+object-fit: cover; /* mantém proporção e corta excesso */
+border-radius:250px 250px 0 0;
+object-fit:cover;
+}
+
+.foto-pequena{
+width: 300px;   /* largura fixa */
+height: 400px;  /* altura fixa */
+object-fit: cover; /* mantém proporção e corta excesso */
+border-radius:1500px;
+position:absolute;
+bottom:-40px;
+left: 450px;
+top: 270px;
+border:6px solid white;
+}
+
+/*=== cherry ===*/ 
+.quadrada-cherry { 
+  width: 300px; /* largura fixa */ 
+  height: 300px; /* altura fixa */ 
+  object-fit: cover; /* mantém proporção e corta excesso */ 
+}
+
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width: 768px){
+
+/* remove o espaço gigante do body */
+body{
+  padding:20px;
+}
+
+.header-image img {
+    margin-top: 120px; /* espaço abaixo do menu */
+    width: 100%;          /* ocupa a largura disponível */
+    max-width: 1500px;    /* controla o tamanho máximo (ajuste se quiser maior) */
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+/* cards ficam em coluna */
+.card{
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+/* imagens ficam responsivas */
+.card img{
+  width:100%;
+  max-width:350px;
+}
+
+/* texto centralizado */
+.card-text{
+  text-align:center;
+}
+
+h1{
+  font-size:28px;
+}
+
+#h1-construções{
+  margin-top: 120px; /* espaço abaixo do menu */
+}
+
+/* parágrafos ajustados */
+p{
+  font-size:16px;
+}
+
+/* menu superior ajustado */
+.menu-container{
+  flex-direction:column;
+  gap:10px;
+}
+
+/* remove posições fixas quebradas */
+.ul-menu{
+  position:static;
+}
+
+.logo{
+  position:static;
+
+  margin:0;
+}
+
+#botao-menu{
+  position:absolute;
+  left:10px;
+}
+
+.contato-container{
+  margin-top: 120px; /* espaço abaixo do menu */
+}
+
+.foto-perfil{
+width: 300px;   /* largura fixa */
+height: 320px;  /* altura fixa */
+object-fit: cover; /* mantém proporção e corta excesso */
+border-radius:50%;
+object-fit:cover;
+}
+
+/* sobre mim */
+.sobre-mim{
+display:flex;
+gap:30px;
+align-items:center;
+margin-top: -40px; /* espaço abaixo do menu */
+}
+
+.banner-contato{
+background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)),
+url("https://i.pinimg.com/originals/3a/3a/99/3a3a99e48e68349cf4a6b742a4692b4c.png?nii=t");
+background-size:cover;
+background-position:center;
+height:100px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+border-radius: 90px 0 90px 0;
+margin-top: 130px; /* espaço abaixo do menu */
+}
+#h1-banner {
+color: #97381c;
+font-size: 35px;
+text-align: center;
+animation: zoomIn 1.5s ease forwards;
+}
+}
